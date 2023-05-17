@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 using namespace std;
 #include "Ninja.hpp"
@@ -9,6 +10,7 @@ namespace ariel
         /* data */
     public:
         YoungNinja( string name,Point coordinate);
+        void move(Character*);
     };
     
 } // namespace ariel

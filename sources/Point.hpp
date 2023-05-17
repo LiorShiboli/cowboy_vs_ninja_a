@@ -1,4 +1,10 @@
+#pragma once
 #include <string>
+namespace ariel
+{
+    
+
+
     class Point
     {
     private:
@@ -10,4 +16,4 @@
         void moveTorwards(Point other);
     };
 
- // namespace ariel
+ }// namespace ariel

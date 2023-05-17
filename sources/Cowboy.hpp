@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include "Character.hpp"
 using namespace std;

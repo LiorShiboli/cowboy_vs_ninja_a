@@ -1,3 +1,4 @@
+#pragma once
 #include "TrainedNinja.hpp"
 #include "YoungNinja.hpp"
 #include "OldNinja.hpp"
