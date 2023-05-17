@@ -14,4 +14,5 @@ namespace ariel
     string Character::print(){
         return "";
     }
+    int Character::get_HP(){return 0;}
     } // namespace ariel

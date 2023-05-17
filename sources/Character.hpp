@@ -15,6 +15,7 @@ namespace ariel
         string get_name();
         Point get_location();
         virtual string print();
+        int get_HP();
     };
     
 } // namespace ariel

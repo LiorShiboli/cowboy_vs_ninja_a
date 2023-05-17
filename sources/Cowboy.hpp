@@ -13,6 +13,8 @@ namespace ariel
         Cowboy(string name, Point coordinate);
         void shoot(Character* enemy);
         string print();
+        bool hasboolets();
+        void reload();
     };
     
     
