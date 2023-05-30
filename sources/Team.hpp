@@ -13,6 +13,7 @@ namespace ariel
     public:
         Team(Character* );
         ~Team();
+        virtual Character* getLeader();
         virtual void add(Character*);
         virtual int stillAlive();
         virtual void attack(Team*);

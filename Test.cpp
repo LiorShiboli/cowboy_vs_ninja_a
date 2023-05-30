@@ -221,5 +221,52 @@ TEST_SUITE("characters"){
     
 }
 TEST_SUITE("Team"){
-
+    TEST_CASE("intialize"){
+        Team team1 = Team(new Cowboy("jango",Point(0,0)));
+        Team team2 = Team(new OldNinja("miyagi",Point(1,2)));
+        CHECK_EQ(team1.getLeader()->get_location().get_x(),0);
+        CHECK_EQ(team1.getLeader()->get_location().get_y(),0);
+        CHECK_EQ(team2.getLeader()->get_location().get_x(),1);
+        CHECK_EQ(team2.getLeader()->get_location().get_y(),2);
+        CHECK_EQ(team1.getLeader()->get_name(),"jango");
+        CHECK_EQ(team1.getLeader()->get_name(),"miyagi");
+        CHECK_EQ(team1.stillAlive(),1);
+        CHECK_EQ(team2.stillAlive(),1);
+    }
+    TEST_CASE("attack"){
+        SUBCASE("ninja attacks"){
+            Character* leader =new Cowboy("jango",Point(0,0));
+            Team team1 = Team(leader);
+            team1.add(new Cowboy("jango",Point(1,2)));
+            Team team2 = Team(new OldNinja("miyagi",Point(1,2)));
+            team2.attack(&team1);
+            CHECK(team2.stillAlive()==2);
+            while (team1.stillAlive()>0)
+            {
+                team2.attack(&team1);
+            }
+            CHECK_FALSE(leader->isAlive());
+            CHECK(team2.stillAlive()==1);
+            
+        }
+        SUBCASE("ninja attacks"){
+            Character* leader =new OldNinja("miyagi",Point(1,2));
+            Team team1 = Team(new Cowboy("jango",Point(0,0)));
+            team1.add(new Cowboy("jango",Point(1,2)));
+            Team team2 = Team(leader);
+            team1.attack(&team2);
+            CHECK(team2.stillAlive()==1);
+            while (team2.stillAlive()>0)
+            {
+                team1.attack(&team2);
+            }
+            CHECK_FALSE(leader->isAlive());
+            CHECK(team1.stillAlive()==2);
+            
+        }
+        SUBCASE("cant attack itself"){
+            Team team1 = Team(new Cowboy("jango",Point(0,0)));
+            CHECK_THROWS(team1.attack(&team1));
+        }
+    }
 }
